@@ -1,0 +1,14 @@
+{
+  "name": "pipe",
+  "main": "./lib/pipe",
+  "version": "0.0.0",
+  "description": "Pipe text in and out of external commands.",
+  "activationEvents": ["pipe:run"],
+  "repository": "https://github.com/moshee/atom-pipe",
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.72.0"
+  },
+  "dependencies": {
+  }
+}
