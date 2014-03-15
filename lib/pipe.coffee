@@ -29,13 +29,7 @@ module.exports =
         stderr += text
 
       proc.on 'close', (code) ->
-        text = stderr || stdout
-        if not text then return
-
-        if text.slice(-1) is '\n'
-          text = text.slice(0, -1)
-
-        editor.setTextInBufferRange(range, text)
+        editor.setTextInBufferRange(range, stderr || stdout)
         editor.setSelectedBufferRange(new Range(range.start, range.start))
         view.focus()
 
