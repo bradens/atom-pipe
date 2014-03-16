@@ -20,13 +20,36 @@ class CommandView extends View
   @samplePlaceholder: ->
     @placeholders[Math.floor(Math.random()*@placeholders.length)]
 
-  initialize: (callback) ->
+  initialize: (history, callback) ->
+    historyPos = history.length
+    cur = ''
+
     @on 'core:cancel core:close', =>
       callback(null)
       @detach()
     @on 'core:confirm', =>
       callback(@commandLine.getText())
       @detach()
+    @commandLine.on 'keydown', (e) =>
+      if history.length is 0 then return
+
+      switch e.keyCode
+        when 38 # up
+          unless historyPos <= 0
+            historyPos--
+            @commandLine.setText history[historyPos]
+
+        when 40 # down
+          if historyPos >= history.length-1
+            historyPos = history.length
+            @commandLine.setText cur
+          else
+            historyPos++
+            @commandLine.setText history[historyPos]
+
+        else
+          if historyPos >= history.length
+            cur = @commandLine.getText()
 
     atom.workspaceView.append(this)
     @commandLine.focus()

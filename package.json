@@ -6,10 +6,25 @@
   "activationEvents": [
     "pipe:run"
   ],
-  "repository": "https://github.com/moshee/atom-pipe",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/moshee/atom-pipe"
+  },
   "license": "MIT",
   "engines": {
     "atom": ">0.72.0"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "readme": "# pipe\n\nSelect text to pipe into external commands and replace it with the output. Sort\nof like `!` in vim. Commands are sent to your `$SHELL`.\n\nDefault keybinding to activate is `cmd-;`.\n\n![pipe in action](https://i.ktkr.us/hoeJ)\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/moshee/atom-pipe/issues"
+  },
+  "homepage": "https://github.com/moshee/atom-pipe",
+  "_id": "pipe@0.1.1",
+  "dist": {
+    "shasum": "065fe0c782ea86980b8cf8e19d2fc40b5851c941"
+  },
+  "_resolved": "/var/folders/hv/nq12s2fx5lv48rtffsd8v2_h0000gn/T/d-114214-49660-1x5dm6u/package.tgz",
+  "_from": "/var/folders/hv/nq12s2fx5lv48rtffsd8v2_h0000gn/T/d-114214-49660-1x5dm6u/package.tgz"
 }

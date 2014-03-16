@@ -2,6 +2,8 @@
 {spawn} = require 'child_process'
 CommandView = require './command-view'
 
+history = []
+
 module.exports =
   activate: ->
     atom.workspaceView.command 'pipe:run', => @run()
@@ -11,10 +13,14 @@ module.exports =
     view = atom.workspaceView.getActiveView()
     return if not editor?
 
-    new CommandView (commandString) ->
+    new CommandView history, (commandString) ->
       if not commandString
         view.focus()
         return
+
+      history.push commandString
+      if history.length > 300
+        history.shift()
 
       range = editor.getSelectedBufferRange()
       stdout = ''
