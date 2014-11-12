@@ -22,23 +22,30 @@ module.exports =
       if history.length > 300
         history.shift()
 
-      range = editor.getSelectedBufferRange()
-      stdout = ''
-      stderr = ''
-
       commandString = "cd '#{atom.project.path}' && #{commandString}"
-      proc = spawn process.env.SHELL, ["-l", "-c", commandString]
+      properties = { reversed: true, invalidate: 'never' }
 
-      proc.stdout.on 'data', (text) ->
-        stdout += text
+      for range in editor.getSelectedBufferRanges()
+        marker = editor.markBufferRange range, properties
+        processRange marker, editor, commandString
 
-      proc.stderr.on 'data', (text) ->
-        stderr += text
+      view.focus()
 
-      proc.on 'close', (code) ->
-        editor.setTextInBufferRange(range, stderr || stdout)
-        editor.setSelectedBufferRange(new Range(range.start, range.start))
-        view.focus()
+processRange = (marker, editor, commandString) ->
+  stdout = ''
+  stderr = ''
 
-      proc.stdin.write(editor.getSelectedText())
-      proc.stdin.end()
+  proc = spawn process.env.SHELL, ["-l", "-c", commandString]
+
+  proc.stdout.on 'data', (text) ->
+    stdout += text
+
+  proc.stderr.on 'data', (text) ->
+    stderr += text
+
+  proc.on 'close', (code) ->
+    text = stderr || stdout
+    editor.setTextInBufferRange(marker.getBufferRange(), text)
+
+  proc.stdin.write(editor.getTextInBufferRange(marker.getBufferRange()))
+  proc.stdin.end()
