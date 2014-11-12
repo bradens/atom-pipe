@@ -26,7 +26,7 @@ module.exports =
       stdout = ''
       stderr = ''
 
-      commandString = "cd #{atom.project.path} && #{commandString}"
+      commandString = "cd '#{atom.project.path}' && #{commandString}"
       proc = spawn process.env.SHELL, ["-l", "-c", commandString]
 
       proc.stdout.on 'data', (text) ->
