@@ -22,7 +22,7 @@ module.exports =
       if history.length > 300
         history.shift()
 
-      commandString = "cd '#{atom.project.path}' && #{commandString}"
+      commandString = "cd '#{atom.project.rootDirectory.path}' && #{commandString}"
       properties = { reversed: true, invalidate: 'never' }
 
       for range in editor.getSelectedBufferRanges()
