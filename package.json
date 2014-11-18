@@ -1,7 +1,7 @@
 {
   "name": "pipe",
   "main": "./lib/pipe",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Pipe text in and out of external commands.",
   "activationEvents": [
     "pipe:run"
