@@ -5,4 +5,4 @@ of like `!` in vim. Commands are sent to your `$SHELL`.
 
 Default keybinding to activate is `cmd-;`.
 
-![pipe in action](https://i.ktkr.us/hoeJ)
+![pipe in action](http://i.imgur.com/63TjiYI.gif)
