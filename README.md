@@ -1,3 +1,7 @@
+**Note:** I don't use Atom any more, so if anyone wants to gain ownership of this project, please let me know.
+
+---
+
 # pipe
 
 Select text to pipe into external commands and replace it with the output. Sort
