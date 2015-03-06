@@ -3,18 +3,20 @@
   "main": "./lib/pipe",
   "version": "0.3.2",
   "description": "Pipe text in and out of external commands.",
-  "activationEvents": [
-    "pipe:run"
-  ],
+  "activationCommands": {
+    "atom-workspace": "pipe:run"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/moshee/atom-pipe"
   },
   "license": "MIT",
   "engines": {
-    "atom": ">0.72.0"
+    "atom": ">0.182.0 <2.0.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "atom-space-pen-views": ">2.0.0"
+  },
   "readme": "# pipe\n\nSelect text to pipe into external commands and replace it with the output. Sort\nof like `!` in vim. Commands are sent to your `$SHELL`.\n\nDefault keybinding to activate is `cmd-;`.\n\n![pipe in action](https://i.ktkr.us/hoeJ)\n",
   "readmeFilename": "README.md",
   "bugs": {

@@ -1,4 +1,5 @@
-{View, EditorView} = require 'atom'
+{View, TextEditorView} = require 'atom-space-pen-views'
+
 
 module.exports =
 class CommandView extends View
@@ -12,7 +13,7 @@ class CommandView extends View
 
   @content: ->
     @div class: 'pipe-command', =>
-      @subview 'commandLine', new EditorView(
+      @subview 'commandLine', new TextEditorView(
         mini: true
         placeholderText: @samplePlaceholder()
       )
