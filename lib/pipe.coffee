@@ -6,7 +6,7 @@ history = []
 
 module.exports =
   activate: ->
-    atom.workspaceView.command 'pipe:run', => @run()
+    atom.commands.add 'atom-workspace', "pipe:run", => @run()
 
   run: ->
     editor = atom.workspace.getActiveEditor()
