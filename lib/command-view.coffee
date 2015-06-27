@@ -52,5 +52,5 @@ class CommandView extends View
           if historyPos >= history.length
             cur = @commandLine.getText()
 
-    atom.workspaceView.append(this)
+    atom.workspace.addBottomPanel(item: this)
     @commandLine.focus()

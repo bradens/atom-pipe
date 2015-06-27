@@ -9,8 +9,8 @@ module.exports =
     atom.commands.add 'atom-workspace', "pipe:run", => @run()
 
   run: ->
-    editor = atom.workspace.getActiveEditor()
-    view = atom.workspaceView.getActiveView()
+    editor = atom.workspace.getActiveTextEditor()
+    view = atom.views.getView(editor)
     return if not editor?
 
     new CommandView history, (commandString) ->
@@ -28,12 +28,12 @@ module.exports =
 
       ranges = editor.getSelectedBufferRanges()
       wg = new WaitGroup ->
-        editor.commitTransaction()
+        editor.groupChangesSinceCheckpoint()
         view.focus()
 
       wg.add(ranges.length)
 
-      editor.beginTransaction()
+      editor.createCheckpoint()
       for range, i in ranges
         marker = editor.markBufferRange range, properties
         processRange marker, editor, commandString, wg
