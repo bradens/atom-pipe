@@ -1,7 +1,7 @@
 {
   "name": "pipe",
   "main": "./lib/pipe",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "Pipe text in and out of external commands.",
   "activationCommands": {
     "atom-workspace": "pipe:run"
